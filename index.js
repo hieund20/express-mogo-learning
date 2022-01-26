@@ -10,7 +10,7 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const URI = process.env.DATABASE_URL;
+const URI = "mongodb+srv://hieund:FVgcfps.XT4aHSw@cluster0.kd1ue.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 app.use(bodyParser.json());
 //Limit: limited when FE submit to Server
