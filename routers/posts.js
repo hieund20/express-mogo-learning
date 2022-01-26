@@ -4,8 +4,8 @@ import { getPostList, addNewPost, updatePost } from "../controllers/posts.js";
 const router = express.Router();
 
 //http://localhost:3000/posts
-router.get('/posts', getPostList);
-router.post('/', addNewPost);
-router.patch('/', updatePost);
+router.get("/", getPostList);
+router.post("/", addNewPost);
+router.patch("/", updatePost);
 
-export default router; 
+export default router;

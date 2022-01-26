@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const schema = new mongoose.Schema(
+const PostSchema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -11,10 +11,12 @@ const schema = new mongoose.Schema(
       required: true,
     },
     author: {
-      type: String,
+      type: mongoose.SchemaTypes.ObjectId,
       required: true,
       default: "Anonymous",
+      ref: "users",
     },
+    thumbnailImage: String,
     attachment: String,
     likeCount: {
       type: Number,
@@ -27,4 +29,4 @@ const schema = new mongoose.Schema(
   }
 );
 
-export const PostModel = mongoose.model('Post', schema);
+export const PostModel = mongoose.model("Post", PostSchema);
