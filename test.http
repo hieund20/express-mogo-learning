@@ -1,0 +1,63 @@
+## User
+POST http://localhost:3000/api/users/addNewUser
+Content-Type: application/json
+
+{
+    "username": "hieu89",
+    "password": "hieupass"
+}
+
+###
+GET http://localhost:3000/api/users/getAllUser
+
+###
+PATCH http://localhost:3000/api/users/updateUser
+Content-Type: application/json  
+
+{
+    "_id": "61f2507f8db81258c1dd86dd",
+    "username": "hieu12",
+    "password": "hieupass"
+}
+
+###
+DELETE http://localhost:3000/api/users/deleteUser
+Content-Type: application/json
+
+{
+    "_id": "61f2997900913f345c3d5861"
+}
+
+
+##POST
+### 
+POST http://localhost:3000/api/posts/addNewPost
+Content-Type: application/json
+
+{
+    "title": "test2",
+    "content": "test 2 content",
+    "author": "61f2507f8db81258c1dd86dd"
+}
+
+###
+GET http://localhost:3000/api/posts/getAllPost
+
+###
+PATCH http://localhost:3000/api/posts/updatePost
+Content-Type: application/json  
+
+{
+    "_id": "61f250e18db81258c1dd86e3",
+    "title": "test update",
+    "content": "update content",
+    "author": "61f2507f8db81258c1dd86dd"
+}
+
+###
+DELETE http://localhost:3000/api/posts/deletePost
+Content-Type: application/json
+
+{
+    "_id": "61f0a96932f124d1a2dcab92"
+}

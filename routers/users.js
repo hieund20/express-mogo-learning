@@ -8,9 +8,10 @@ import {
 
 const router = express.Router();
 
-//http://localhost:3000/posts
+//http://localhost:3000/users
 router.get("/getAllUser", getUserList);
 router.post("/addNewUser", addNewUser);
-router.patch("/", updateUser);
+router.patch("/updateUser", updateUser);
+router.delete("/deleteUser", deleteUser);
 
 export default router;
