@@ -9,8 +9,8 @@ import {
 const router = express.Router();
 
 //http://localhost:3000/posts
-router.get("/", getUserList);
-router.post("/", addNewUser);
+router.get("/getAllUser", getUserList);
+router.post("/addNewUser", addNewUser);
 router.patch("/", updateUser);
 
 export default router;
