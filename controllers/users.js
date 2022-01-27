@@ -1,12 +1,12 @@
 import { UserModel } from "../models/UserModel.js";
 
 export const getUserList = async (req, res) => {
-  try {   
+  try {
     const userList = await UserModel.find();
 
     res.status(200).json(userList);
   } catch (err) {
-    res.status(500).json({ error: err });
+    res.status(500).json({ status: "failed" });
   }
 };
 
@@ -18,9 +18,9 @@ export const addNewUser = async (req, res) => {
     const user = new UserModel(newUser);
     await user.save();
 
-    res.status(200).json(postList);
+    res.status(200).json({ status: "success" });
   } catch (err) {
-    res.status(500).json({ error: err });
+    res.status(500).json({ status: "failed" });
   }
 };
 
@@ -29,27 +29,25 @@ export const updateUser = async (req, res) => {
     //Data submit from client
     const updateUser = req.body;
 
-    const user = await UserModel.findOneAndUpdate(
+    await UserModel.findOneAndUpdate(
       { _id: updateUser._id },
       updateUser,
       { new: true } //Data response is new
     );
 
-    res.status(200).json(postList);
+    res.status(200).json({ status: "success" });
   } catch (err) {
-    res.status(500).json({ error: err });
+    res.status(500).json({ status: "failed" });
   }
 };
 
 export const deleteUser = async (req, res) => {
   try {
-    //Data submit from client
-    const deleteUser = req.body;
+    const userId = req.body._id;
 
-    const user = await UserModel.deleteOne({ _id: deleteUser._id });
-
-    res.status(200).json(postList);
+    await UserModel.deleteOne({ _id: userId });
+    res.status(200).json({ status: "success" });
   } catch (err) {
-    res.status(500).json({ error: err });
+    res.status(500).json({ status: "failed" });
   }
 };

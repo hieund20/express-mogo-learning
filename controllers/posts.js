@@ -2,18 +2,11 @@ import { PostModel } from "../models/PostModel.js";
 
 export const getPostList = async (req, res) => {
   try {
-    //Test add new Data
-    // const post = new PostModel({
-    //     title: 'test',
-    //     content: 'test'
-    // });
-    // post.save();
-
     const postList = await PostModel.find();
 
     res.status(200).json(postList);
   } catch (err) {
-    res.status(500).json({ error: err });
+    res.status(500).json({ status: "failed" });
   }
 };
 
@@ -25,9 +18,9 @@ export const addNewPost = async (req, res) => {
     const post = new PostModel(newPost);
     await post.save();
 
-    res.status(200).json(postList);
+    res.status(200).json({ status: "success" });
   } catch (err) {
-    res.status(500).json({ error: err });
+    res.status(500).json({ status: "failed" });
   }
 };
 
@@ -36,26 +29,25 @@ export const updatePost = async (req, res) => {
     //Data submit from client
     const updatePost = req.body;
 
-    const post = await PostModel.findOneAndUpdate(
+    await PostModel.findOneAndUpdate(
       { _id: updatePost._id },
       updatePost,
       { new: true } //Data response is new
     );
 
-    res.status(200).json(postList);
+    res.status(200).json({ status: "success" });
   } catch (err) {
-    res.status(500).json({ error: err });
+    res.status(500).json({ status: "failed" });
   }
 };
 
 export const deletePost = async (req, res) => {
   try {
     //Data submit from client
-    const deletePost = req.body;
+    const postId = req.body._id;
+    await PostModel.deleteOne({ _id: postId });
 
-    const post = await PostModel.deleteOne({ _id: deletePost._id });
-
-    res.status(200).json(postList);
+    res.status(200).json({ status: "success" });
   } catch (err) {
     res.status(500).json({ error: err });
   }
