@@ -10,6 +10,18 @@ export const getPostList = async (req, res) => {
   }
 };
 
+export const getPostDetail = async (req, res) => {
+  try {
+    const id = req.params.id;
+    console.log("id", id);
+    const post = await PostModel.findById(id);
+
+    res.status(200).json(post);
+  } catch (err) {
+    res.status(500).json({status: "failed"})
+  }
+};
+
 export const addNewPost = async (req, res) => {
   try {
     //Data submit from client
