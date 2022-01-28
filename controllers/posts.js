@@ -56,8 +56,8 @@ export const updatePost = async (req, res) => {
 export const deletePost = async (req, res) => {
   try {
     //Data submit from client
-    const postId = req.body._id;
-    await PostModel.deleteOne({ _id: postId });
+    const id = req.params.id;
+    await PostModel.deleteOne({ _id: id });
 
     res.status(200).json({ status: "success" });
   } catch (err) {

@@ -14,6 +14,6 @@ router.get("/getAllPost", getPostList);
 router.get("/getAllPost/:id", getPostDetail);
 router.post("/addNewPost", addNewPost);
 router.patch("/updatePost", updatePost);
-router.delete("/deletePost", deletePost);
+router.delete("/deletePost/:id", deletePost);
 
 export default router;
