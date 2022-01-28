@@ -60,9 +60,4 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/api/posts/deletePost
-Content-Type: application/json
-
-{
-    "_id": "61f0a96932f124d1a2dcab92"
-}
+DELETE http://localhost:3000/api/posts/deletePost/61f250e18db81258c1dd86e3
