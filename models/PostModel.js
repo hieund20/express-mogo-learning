@@ -16,6 +16,7 @@ const PostSchema = new mongoose.Schema(
       default: "Anonymous",
       ref: "users",
     },
+    tag: ["travel", "programming", "english"],
     thumbnailImage: String,
     attachment: String,
     likeCount: {
