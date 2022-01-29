@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 
 import posts from "./routers/posts.js";
 import users from "./routers/users.js";
+import tags from "./routers/tags.js";
 
 //Read env variable from .env file
 dotenv.config();
@@ -21,6 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true, limit: "30mb" }));
 app.use(cors());
 
 app.use("/api/posts", posts);
+app.use("/api/tags", tags);
 app.use("/api/users", users);
 
 mongoose
