@@ -35,9 +35,10 @@ POST http://localhost:3000/api/posts/addNewPost
 Content-Type: application/json
 
 {
-    "title": "test2",
-    "content": "test 2 content",
-    "author": "61f2507f8db81258c1dd86dd"
+    "title": "test tag 2",
+    "content": "test tag 2",
+    "author": "61f2507f8db81258c1dd86dd",
+    "tags": ["h1", "h2"]
 }
 
 ###
@@ -70,5 +71,5 @@ POST http://localhost:3000/api/tags/addNewTag
 Content-Type: application/json
 
 {
-    "name": "programming"
+    "name": "travel"
 }
