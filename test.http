@@ -61,3 +61,14 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:3000/api/posts/deletePost/61f250e18db81258c1dd86e3
+
+###Tag
+GET http://localhost:3000/api/tags/getAllTags
+
+###
+POST http://localhost:3000/api/tags/addNewTag
+Content-Type: application/json
+
+{
+    "name": "programming"
+}
