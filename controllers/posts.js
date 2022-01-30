@@ -2,8 +2,13 @@ import { PostModel } from "../models/PostModel.js";
 
 export const getPostList = async (req, res) => {
   try {
-    const postList = await PostModel.find();
-
+    const page = req.query.page;
+    const limit = req.query.limit;
+    
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit
+    
+    const postList = await PostModel.find().limit(limit).skip(startIndex).exec();
     res.status(200).json(postList);
   } catch (err) {
     res.status(500).json({ status: "failed" });
@@ -18,7 +23,7 @@ export const getPostDetail = async (req, res) => {
 
     res.status(200).json(post);
   } catch (err) {
-    res.status(500).json({status: "failed"})
+    res.status(500).json({ status: "failed" });
   }
 };
 

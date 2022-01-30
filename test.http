@@ -45,7 +45,11 @@ Content-Type: application/json
 GET http://localhost:3000/api/posts/getAllPost
 
 
-###
+### Pagination
+GET http://localhost:3000/api/posts/getAllPost?page=1&limit=5
+
+
+### Get post detail
 GET http://localhost:3000/api/posts/getAllPost/61f27536f1099e4bbc4fc215
 
 
@@ -71,5 +75,5 @@ POST http://localhost:3000/api/tags/addNewTag
 Content-Type: application/json
 
 {
-    "name": "travel"
+    "name": "travel 99"
 }
