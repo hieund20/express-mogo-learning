@@ -17,7 +17,7 @@ export const postNewTag = async (req, res) => {
     const tag = new TagModel(newTag);
     await tag.save();
 
-    res.status(200).json({ status: "success" });
+    res.status(200).json(tag);
   } catch (err) {
     res.status(500).json({ status: "failed" });
   }
