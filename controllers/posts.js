@@ -8,20 +8,19 @@ export const getPostList = async (req, res) => {
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
 
-    const totalPage = await PostModel.countDocuments();
+    const counter = await PostModel.countDocuments();
+    const totalPage = Math.ceil(counter / limit);
 
     const postList = await PostModel.find()
       .limit(limit)
       .skip(startIndex)
       .exec();
-    res
-      .status(200)
-      .json({
-        responseData: postList,
-        limit: limit,
-        page: page,
-        totalPage: totalPage,
-      });
+    res.status(200).json({
+      responseData: postList,
+      limit: limit,
+      page: page,
+      totalPage: totalPage,
+    });
   } catch (err) {
     res.status(500).json({ status: "failed" });
   }
