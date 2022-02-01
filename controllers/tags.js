@@ -4,7 +4,12 @@ export const getTagList = async (req, res) => {
   try {
     const tagList = await TagModel.find();
 
-    res.status(200).json(tagList);
+    const counter = await TagModel.countDocuments();
+    console.log("counter", counter);
+
+    res
+      .status(200)
+      .json({ responseData: tagList, count: counter, status: "success" });
   } catch (err) {
     res.status(500).json({ status: "failed" });
   }

@@ -15,11 +15,13 @@ export const getPostList = async (req, res) => {
       .limit(limit)
       .skip(startIndex)
       .exec();
+
     res.status(200).json({
       responseData: postList,
       limit: limit,
       page: page,
       totalPage: totalPage,
+      status: "success"
     });
   } catch (err) {
     res.status(500).json({ status: "failed" });
