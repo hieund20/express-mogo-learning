@@ -29,7 +29,7 @@ Content-Type: application/json
 }
 
 
-##POST
+##==================POST==================
 ### 
 POST http://localhost:3000/api/posts/addNewPost
 Content-Type: application/json
@@ -40,9 +40,6 @@ Content-Type: application/json
     "author": "61f2507f8db81258c1dd86dd",
     "tags": ["h1", "h2"]
 }
-
-###
-GET http://localhost:3000/api/posts/getAllPost
 
 
 ### Pagination
@@ -67,7 +64,9 @@ Content-Type: application/json
 ###
 DELETE http://localhost:3000/api/posts/deletePost/61f250e18db81258c1dd86e3
 
-###Tag
+
+
+###==================TAG==================
 GET http://localhost:3000/api/tags/getAllTags
 
 ###
@@ -76,4 +75,20 @@ Content-Type: application/json
 
 {
     "name": "travel 99"
+}
+
+
+###==================COMMENTS==================
+
+##Pagination
+GET http://localhost:3000/api/comments/getAllComments?page=1&limit=5
+
+###
+POST http://localhost:3000/api/comments/addNewComment
+Content-Type: application/json
+
+{
+    "content": "test content 2",
+    "post": "61f3ee173f5728938241c3ce",
+    "likeCount": 2
 }

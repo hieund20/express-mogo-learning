@@ -1,16 +1,14 @@
 import express from "express";
 import {
-  getPostList,
-  getPostDetail,
   addNewPost,
-  updatePost,
   deletePost,
+  getPostDetail,
+  getPostList,
+  updatePost,
 } from "../controllers/posts.js";
-import cors from "cors";
 
 const router = express.Router();
 
-//http://localhost:3000/posts
 router.get("/getAllPost", getPostList);
 router.get("/getAllPost/:id", getPostDetail);
 router.post("/addNewPost", addNewPost);

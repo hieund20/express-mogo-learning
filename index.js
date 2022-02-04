@@ -7,6 +7,7 @@ import dotenv from "dotenv";
 import posts from "./routers/posts.js";
 import users from "./routers/users.js";
 import tags from "./routers/tags.js";
+import comments from "./routers/comments.js";
 
 //Read env variable from .env file
 dotenv.config();
@@ -24,6 +25,7 @@ app.use(cors());
 app.use("/api/posts", posts);
 app.use("/api/tags", tags);
 app.use("/api/users", users);
+app.use("/api/comments", comments);
 
 mongoose
   .connect(URI, {
