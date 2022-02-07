@@ -2,6 +2,7 @@ import { CommentModel } from "../models/CommentModel.js";
 
 export const getCommentList = async (req, res) => {
   try {
+    //Pagination
     const page = req.query.page;
     const limit = req.query.limit;
 
@@ -10,6 +11,9 @@ export const getCommentList = async (req, res) => {
 
     const counter = await CommentModel.countDocuments();
     const totalPage = Math.ceil(counter / limit);
+
+    //Filter by post ID
+    const postId = req.params.postId;
 
     const commentList = await CommentModel.find()
       .limit(limit)
