@@ -80,8 +80,8 @@ Content-Type: application/json
 
 ###==================COMMENTS==================
 
-##Pagination
-GET http://localhost:3000/api/comments/getAllComments?page=1&limit=5
+##Pagination && Filter by Post Id
+GET http://localhost:3000/api/comments/getAllComments?page=1&limit=5&postId=61ffcf5eb30d7784a85d28d7
 
 ###
 POST http://localhost:3000/api/comments/addNewComment
