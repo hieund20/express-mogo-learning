@@ -5,8 +5,6 @@ export const getTagList = async (req, res) => {
     const tagList = await TagModel.find();
 
     const counter = await TagModel.countDocuments();
-    console.log("counter", counter);
-
     res
       .status(200)
       .json({ responseData: tagList, count: counter, status: "success" });

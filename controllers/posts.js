@@ -2,26 +2,12 @@ import { PostModel } from "../models/PostModel.js";
 
 export const getPostList = async (req, res) => {
   try {
-    const page = req.query.page;
-    const limit = req.query.limit;
-
-    const startIndex = (page - 1) * limit;
-    const endIndex = page * limit;
-
-    const counter = await PostModel.countDocuments();
-    const totalPage = Math.ceil(counter / limit);
-
-    const postList = await PostModel.find()
-      .limit(limit)
-      .skip(startIndex)
-      .exec();
+    console.log("run")
+    const postList = await PostModel.find();
 
     res.status(200).json({
       responseData: postList,
-      limit: limit,
-      page: page,
-      totalPage: totalPage,
-      status: "success"
+      status: "success",
     });
   } catch (err) {
     res.status(500).json({ status: "failed" });
@@ -82,3 +68,32 @@ export const deletePost = async (req, res) => {
     res.status(500).json({ error: err });
   }
 };
+
+//Pagination
+// export const getPostList = async (req, res) => {
+//   try {
+//     const page = req.query.page;
+//     const limit = req.query.limit;
+
+//     const startIndex = (page - 1) * limit;
+//     const endIndex = page * limit;
+
+//     const counter = await PostModel.countDocuments();
+//     const totalPage = Math.ceil(counter / limit);
+
+//     const postList = await PostModel.find()
+//       .limit(limit)
+//       .skip(startIndex)
+//       .exec();
+
+//     res.status(200).json({
+//       responseData: postList,
+//       limit: limit,
+//       page: page,
+//       totalPage: totalPage,
+//       status: "success"
+//     });
+//   } catch (err) {
+//     res.status(500).json({ status: "failed" });
+//   }
+// };
