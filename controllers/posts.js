@@ -2,11 +2,12 @@ import { PostModel } from "../models/PostModel.js";
 
 export const getPostList = async (req, res) => {
   try {
-    console.log("run")
     const postList = await PostModel.find();
+    const counter = await PostModel.countDocuments();
 
     res.status(200).json({
       responseData: postList,
+      count: counter,
       status: "success",
     });
   } catch (err) {
