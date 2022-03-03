@@ -2,29 +2,14 @@ import { CommentModel } from "../models/CommentModel.js";
 
 export const getCommentList = async (req, res) => {
   try {
-    //Pagination
-    const page = req.query.page;
-    const limit = req.query.limit;
-
-    const startIndex = (page - 1) * limit;
-    const endIndex = page * limit;
-
-    const counter = await CommentModel.countDocuments();
-    const totalPage = Math.ceil(counter / limit);
-
     //Filter by post ID
     const postId = req.params.postId;
-
-    const commentList = await CommentModel.find()
-      .limit(limit)
-      .skip(startIndex)
-      .exec();
+    const commentList = await CommentModel.find();
+    const counter = await CommentModel.countDocuments();
 
     res.status(200).json({
       responseData: commentList,
-      limit: limit,
-      page: page,
-      totalPage: totalPage,
+      count: counter,
       status: "success",
     });
   } catch (err) {
@@ -74,3 +59,36 @@ export const deleteComment = async (req, res) => {
     res.status(500).json({ error: err });
   }
 };
+
+// //Pagination
+// export const getCommentList = async (req, res) => {
+//   try {
+//     //Pagination
+//     const page = req.query.page;
+//     const limit = req.query.limit;
+
+//     const startIndex = (page - 1) * limit;
+//     const endIndex = page * limit;
+
+//     const counter = await CommentModel.countDocuments();
+//     const totalPage = Math.ceil(counter / limit);
+
+//     //Filter by post ID
+//     const postId = req.params.postId;
+
+//     const commentList = await CommentModel.find()
+//       .limit(limit)
+//       .skip(startIndex)
+//       .exec();
+
+//     res.status(200).json({
+//       responseData: commentList,
+//       limit: limit,
+//       page: page,
+//       totalPage: totalPage,
+//       status: "success",
+//     });
+//   } catch (err) {
+//     res.status(500).json({ status: "failed" });
+//   }
+// };

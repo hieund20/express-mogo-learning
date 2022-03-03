@@ -3,8 +3,8 @@ import { TagModel } from "../models/TagModel.js";
 export const getTagList = async (req, res) => {
   try {
     const tagList = await TagModel.find();
-
     const counter = await TagModel.countDocuments();
+    
     res
       .status(200)
       .json({ responseData: tagList, count: counter, status: "success" });
