@@ -17,9 +17,15 @@ const PORT = process.env.PORT || 3000;
 const URI =
   "mongodb+srv://hieund:FVgcfps.XT4aHSw@cluster0.kd1ue.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: "50mb" }));
 //Limit: limited when FE submit to Server
-app.use(bodyParser.urlencoded({ extended: true, limit: "30mb" }));
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+    limit: "50mb",
+    parameterLimit: 50000,
+  })
+);
 app.use(cors());
 
 app.use("/api/posts", posts);
